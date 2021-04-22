@@ -32,6 +32,10 @@ what is false sharing? why AtomicLong has this false sharing issue, how to fix i
    well looks like dromara only documented disruptor for hmily on weichat
    
 5. try to analyze disruptor usage in hmily
+    after compare hmily and soul, looks like soul is a refactor versin of hmily's disruptor,
+   much more clear structure and easy to understand, we can use this as cutpoint to learn about those 2 modules.
+   
+6. learn hmily and soul's disruptor
    
 
    
