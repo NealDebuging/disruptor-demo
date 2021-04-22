@@ -24,6 +24,14 @@ what is false sharing? why AtomicLong has this false sharing issue, how to fix i
   return new EventHandlerGroup<T>(this, consumerRepository, processorSequences);
    then addGatingSequences
 
-    
+5. build event tree [todo] 
+   
+6. check how does soul use disruptor
+   https://github.com/dromara/soul
+   https://github.com/dromara/soul/tree/master/soul-disruptor
+   well looks like dromara only documented disruptor for hmily on weichat
+   
+5. try to analyze disruptor usage in hmily
+   
 
    
