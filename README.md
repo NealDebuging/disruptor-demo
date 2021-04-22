@@ -13,7 +13,17 @@ what is false sharing? why AtomicLong has this false sharing issue, how to fix i
 3. run demo 
    
 4. try dependency graph
-- The ApplicationConsumer depends on the JournalConsumer and ReplicationConsumer. 
+- The ApplicationConsumer depends on the JournalConsumer and ReplicationConsumer.
+- stuck at how to use ringBuffer.addGatingSequences();??? 
+  go to the github and search in the official repository
+   so Basically wen don't need to use addGatingSequences, 
+  since disruptor provide the DSL handleEventWith/then which is basically
+  the same as 
+  new BatchEventProcessor<T>(ringBuffer, barrier, eventHandler)
+  processorSequences[i] = batchEventProcessor.getSequence();
+  return new EventHandlerGroup<T>(this, consumerRepository, processorSequences);
+   then addGatingSequences
+
     
 
    

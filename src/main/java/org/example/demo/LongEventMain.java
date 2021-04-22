@@ -3,6 +3,7 @@ package org.example.demo;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.util.DaemonThreadFactory;
+import org.example.App;
 
 import java.nio.ByteBuffer;
 
@@ -24,6 +25,8 @@ public class LongEventMain {
 
         // Connect the handler
         disruptor.handleEventsWith(new LongEventHandler())
+                .handleEventsWith(new JournalConsumer(), new ReplicationConsumer())
+                .then(new ApplicationConsumer())
                 .then(new ClearingLongEventHandler());
 
         // Start the Disruptor, starts all threads running
@@ -31,7 +34,6 @@ public class LongEventMain {
 
         // Get the ring buffer from the Disruptor to be used for publishing.
         RingBuffer<LongEvent> ringBuffer = disruptor.getRingBuffer();
-        //ringBuffer.addGatingSequences();
 
         LongEventProducer producer = new LongEventProducer(ringBuffer);
 
